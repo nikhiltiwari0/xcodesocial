@@ -83,12 +83,18 @@ struct ContentView: View {
     }
     
     private var profileView: some View {
-        VStack {
-            Spacer()
-            Text("User Profile")
-                .font(.headline)
-                .foregroundColor(.gray)
-            Spacer()
+        ZStack(alignment: .topTrailing) {
+            Color.clear
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.gray)
+                .frame(height: 50)
+                .overlay(
+                    Text("User's Name")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .fontDesign(.monospaced)
+                    )
+                .padding()
         }
     }
     
@@ -98,7 +104,6 @@ struct ContentView: View {
             Button(action: { selectedTab = .feed }) {
                 VStack {
                     Image(systemName: "list.bullet")
-//                    Text("FEED")
                 }
                 .font(.title)
             }
@@ -106,7 +111,6 @@ struct ContentView: View {
             Button(action: { selectedTab = .post }) {
                 VStack {
                     Image(systemName: "plus.circle")
-//                    Text("POST")
                 }
                 .font(.title)
             }
@@ -114,7 +118,6 @@ struct ContentView: View {
             Button(action: { selectedTab = .profile }) {
                 VStack {
                     Image(systemName: "person.crop.circle")
-//                    Text("PROFILE")
                 }
                 .font(.title)
             }
